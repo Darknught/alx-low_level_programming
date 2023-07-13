@@ -2,6 +2,8 @@
 /**
  *Main - Entry point
  *
+ *Description - The main function will print using the puts function
+ *
  * Return: 0 (Success)
  */
 
