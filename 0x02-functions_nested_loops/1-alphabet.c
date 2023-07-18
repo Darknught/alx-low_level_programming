@@ -2,8 +2,6 @@
 #include "main.h"
 /**
  * main - prints alphabets in lowercase
- *
- * Return: 0 (success)
  */
 void print_alphabet(void)
 {
@@ -12,5 +10,4 @@ void print_alphabet(void)
 	for (letter = 'a'; letter <= 'z'; letter++)
 		_putchar(letter);
 	_putchar('\n');
-	return (0);
 }
