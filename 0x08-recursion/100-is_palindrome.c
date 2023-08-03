@@ -13,6 +13,7 @@ int _strlen_recursion(char *s)
 
 /**
  * pal_check - check palindrome
+ * @s: string
  * @y: left index
  * @z: right index
  * Return: 1, or 0 otherwise
