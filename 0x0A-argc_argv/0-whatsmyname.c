@@ -1,19 +1,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 /**
- * main - Entry point
+ * main - prints its name
  * @argc: argument to count
- * @argv: array of pointers
+ * @argv: arguments
  * Return: 0 (success)
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	int i;
+	(void)argc;
 
-	printf("argc = %d\n", argc);
-	for (i = 0; i < argc; i++)
-	{
-		printf("argv[%d] = %s\n", i, argv[i]);
-	}
+	printf("%s\n", argv[0]);
 	return (0);
 }
