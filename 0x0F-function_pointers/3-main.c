@@ -9,20 +9,21 @@
  */
 int main(int argc, char *argv[])
 {
-	int (*op)(int, int);
+	int (*opr)(int, int);
 
 	if (argc != 4)
 	{
 		printf("Error\n");
 		exit(98);
 	}
-	op = get_op_func(argv[2]);
 
-	if (!op)
+	opr = get_op_func(argv[2]);
+
+	if (!opr)
 	{
 		printf("Error\n");
 		exit(99);
 	}
-	printf("%d\n", op(atoi(argv[1]), atoi(argv[3])));
+	printf("%d\n", opr(atoi(argv[1]), atoi(argv[3])));
 	return (0);
 }
