@@ -2,6 +2,7 @@
 /**
  * int_index - searches for an integer
  * @size: number of elements in array
+ * @array: array to execute
  * @cmp: pointer to function
  * Return: index of the first element, or -1 if no element
  */
