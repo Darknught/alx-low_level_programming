@@ -1,7 +1,7 @@
 #include "lists.h"
 /**
  * _strlen - get the length of a string
- * @s: string
+ * @str: string
  * Return: length
  */
 unsigned int _strlen(char *str)
