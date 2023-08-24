@@ -6,12 +6,10 @@
  */
 unsigned int _strlen(char *str)
 {
-	int i = 0;
+	unsigned int i;
 
-	while (str[i])
-	{
-		i++;
-	}
+	for (i = 0; str[i]; i++)
+		;
 	return (i);
 }
 
