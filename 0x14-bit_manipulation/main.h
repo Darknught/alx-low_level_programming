@@ -1,7 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#define UL unsigned long int
 
 #include <stdio.h>
 #include <string.h>
