@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * cal_power - calculates the power
+ * cal_power - calculates the base and power
  * @base: the base of the exponent
  * @exp: power of exponent
- * return: value of base and power
+ * Return: value of base and power
  */
 unsigned long int cal_power(unsigned int base, unsigned int exp)
 {
