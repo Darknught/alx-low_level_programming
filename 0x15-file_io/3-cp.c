@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 	char buffer[BUFFER_SIZE];
 
 	if (argc != 3)
-		print_error(97, "Usage: cp frm f_to\n");
+		print_error(97, "Usage: cp file_from file_to\n");
 	frm = open(argv[1], O_RDONLY);
 
 	if (frm == -1)
