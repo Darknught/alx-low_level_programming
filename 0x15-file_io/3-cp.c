@@ -4,7 +4,6 @@
  * print_error - prints an error and exits
  * @ex_code: exit code
  * @format: format string for the error message
- * @arg: argument for the format string
  */
 void print_error(int ex_code, const char *format, ...)
 {
@@ -29,7 +28,7 @@ int main(int argc, char *argv[])
 	char buffer[BUFFER_SIZE];
 
 	if (argc != 3)
-		print_error(97, "Usage: cp frm f_to\n", 0);
+		print_error(97, "Usage: cp frm f_to\n");
 	frm = open(argv[1], O_RDONLY);
 
 	if (frm == -1)
