@@ -2,6 +2,7 @@
 
 /**
  * print_error - prints error message and exit
+ * @ex_code: exit code of the program
  * @format: format string of the error message
  *
  */
