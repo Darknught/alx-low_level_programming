@@ -1,5 +1,7 @@
 #include "main.h"
 
+void delf_info(const char *filename);
+
 /**
  * print_error - prints error message and exit
  * @ex_code: exit code of the program
@@ -18,30 +20,63 @@ void print_error(int ex_code, const char *format, ...)
 
 /**
  * delf_info - display information from the ELF header
- * @header: pointer to the ELF header
+ * @filename: pointer to the name of the file
  *
  */
-void delf_info(Elf64_Ehdr *header)
+void delf_info(const char *filename)
 {
+	FILE *myfile;
+	Elf32_Ehdr *header;
 	int i;
 
-	printf("Magic: ");
-	for (i = 0; i < EI_NIDENT; i++)
+	myfile = fopen(filename, "rb");
+	if (myfile == NULL)
+	{
+		printf("Error: Unable to open file\n");
+		return;
+	}
+
+	header = (Elf32_Ehdr *)malloc(sizeof(Elf32_Ehdr));
+	if (header == NULL)
+	{
+		printf("Error: Unable to allocate memory\n");
+		fclose(myfile);
+		return;
+	}
+
+	if (fread(header, sizeof(Elf32_Ehdr), 1, myfile) != 1)
+	{
+		printf("Error: Unable to read file\n");
+		free(header);
+		fclose(myfile);
+		return;
+	}
+	printf("ELF Header:\n");
+	printf("  Magic:   ");
+	for (i = 0; i < 16; i++)
 	{
 		printf("%02x ", header->e_ident[i]);
 	}
 	printf("\n");
+	printf("  Class:                             ");
 
-	printf("Class: %d\n", header->e_ident[EI_CLASS]);
-	printf("Data: %d\n", header->e_ident[EI_DATA]);
-	printf("Version: %d\n", header->e_ident[EI_VERSION]);
-	printf("OS/ABI: %d\n", header->e_ident[EI_OSABI]);
-	printf("ABI Version: %d\n", header->e_ident[EI_ABIVERSION]);
+	switch (header->e_ident[EI_CLASS])
+	{
+		case ELFCLASS32:
+			printf("ELF32\n");
+			break;
+		case ELFCLASS64:
+			printf("ELF54\n");
+			break;
+		default:
+			printf("Unknown\n");
+			break;
+	}
+	printf("  Entry point address: 0x%lx\n", (unsigned long)header->e_entry);
 
-	printf("Type: %d\n", header->e_type);
-	printf("Entry point address: 0x%lx\n", (unsigned long)header->e_entry);
+	free(header);
+	fclose(myfile);
 }
-
 /**
  * main - Entry point
  * @argc: argument count
@@ -58,7 +93,8 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		print_error(97, "Usage: elf_header elf_filename\n");
+		printf("Usage: %s <filename>\n", argv[0]);
+		return (1);
 	}
 
 	fd = open(argv[1], O_RDONLY);
@@ -83,7 +119,7 @@ int main(int argc, char *argv[])
 		print_error(98, "Error: Not an ELF file\n");
 	}
 
-	delf_info(&header);
+	delf_info(argv[1]);
 
 	close(fd);
 	return (0);
