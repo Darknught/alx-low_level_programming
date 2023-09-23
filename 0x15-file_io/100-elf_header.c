@@ -150,7 +150,7 @@ void print_osabi(unsigned char *e_ident)
 		printf("UNIX -IRIX\n");
 		break;
 	case ELFOSABI_FREEBSD:
-		printf("UNIX - FreeBSD\n");;
+		printf("UNIX - FreeBSD\n");
 		break;
 	case ELFOSABI_TRU64:
 		printf("UNIX - TRU64\n");
@@ -226,7 +226,6 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 			((e_entry >> 8) & 0xFF00FF);
 		e_entry = (e_entry << 16) | (e_entry >> 16);
 	}
-	
 	if (e_ident[EI_CLASS] == ELFCLASS32)
 		printf("%#x\n", (unsigned int)e_entry);
 	else
@@ -268,7 +267,6 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		exit(98);
 	}
 	myheader = malloc(sizeof(Elf64_Ehdr));
-
 	if (myheader == NULL)
 	{
 		close_elf(x);
@@ -294,7 +292,6 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	print_abi(myheader->e_ident);
 	print_type(myheader->e_type, myheader->e_ident);
 	print_entry(myheader->e_entry, myheader->e_ident);
-
 
 	free(myheader);
 	close_elf(x);
