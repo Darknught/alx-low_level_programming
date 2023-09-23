@@ -72,10 +72,10 @@ void print_myclass(unsigned char *e_ident)
 		printf("ELF32\n");
 		break;
 	case ELFCLASS64:
-		printf("ELF54\n");
+		printf("ELF64\n");
 		break;
 	default:
-		printf("unknown: %x>\n", e_ident[EI_CLASS]);
+		printf("<unknown: %x>\n", e_ident[EI_CLASS]);
 	}
 }
 
@@ -94,6 +94,9 @@ void print_mydata(unsigned char *e_ident)
 		break;
 	case ELFDATA2LSB:
 		printf("2's compliment, little endian\n");
+		break;
+	case ELFDATA2MSB:
+		printf("2's compliment, big endian\n");
 		break;
 	default:
 		printf("<unknown: %x>\n", e_ident[EI_CLASS]);
