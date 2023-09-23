@@ -56,10 +56,10 @@ void print_magic(unsigned char *e_ident)
 }
 
 /**
- * print_myclass - prints the class of an ELF header
+ * print_class - prints the class of an ELF header
  * @e_ident: A pointer to an array containing the ELF class
  */
-void print_myclass(unsigned char *e_ident)
+void print_class(unsigned char *e_ident)
 {
 	printf("  Class:                             ");
 
@@ -80,10 +80,10 @@ void print_myclass(unsigned char *e_ident)
 }
 
 /**
- * print_mydata - prints the data of an ELF header
+ * print_data - prints the data of an ELF header
  * @e_ident: A pointer to an array containing the ELF class
  */
-void print_mydata(unsigned char *e_ident)
+void print_data(unsigned char *e_ident)
 {
 	printf("  Data:                              ");
 
@@ -288,8 +288,8 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	checking_elf(myheader->e_ident);
 	printf("ELF Header:\n");
 	print_magic(myheader->e_ident);
-	print_myclass(myheader->e_ident);
-	print_mydata(myheader->e_ident);
+	print_class(myheader->e_ident);
+	print_data(myheader->e_ident);
 	print_version(myheader->e_ident);
 	print_osabi(myheader->e_ident);
 	print_abi(myheader->e_ident);
