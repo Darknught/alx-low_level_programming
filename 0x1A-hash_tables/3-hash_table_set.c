@@ -1,5 +1,7 @@
 #include "hash_tables.h"
 
+int hash_table_set(hash_table_t *ht, const char *key, const char *value);
+
 /**
  * hash_table_set - Adds or updates a key-value pair in the hash table
  * @ht: the hash table
