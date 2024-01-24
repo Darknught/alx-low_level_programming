@@ -1,16 +1,10 @@
 CC = gcc
 CFLAGS = -Wall -g
 
-SRCS = main.c school.c
-OBJS = $(SRCS:.c=.o)
-
 all: school
 
-school: $(OBJS) a.out
-	$(CC) $(CFLAGS) -o school $(OBJS) a.out
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+school: main.c school.c
+	$(CC) $(CFLAGS) main.c school.c -o school
 
 clean:
-	rm -f school $(OBJS)
+	rm -f school
