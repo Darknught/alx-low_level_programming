@@ -1,6 +1,5 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -pedantic
-RM = rm -f
 
 SRC = main.c school.c
 NAME = school
