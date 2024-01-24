@@ -19,11 +19,9 @@ $(NAME): $(OBJ)
 clean:
 	$(RM) *~ $(NAME) *#
 
-oclean:
-	$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(NAME)
 
 re: fclean all
 
